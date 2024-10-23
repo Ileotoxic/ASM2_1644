@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATN TOY SHOP</title>
+    <!--<meta http-equiv="refresh" content="120">!-->
+    <link rel='stylesheet' href='/stylesheets/users.css' />
+    <style>
+        .hidden {
+            display: none;
+        }
+        .form-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="title-container">
+        <h1>ATN TOY SHOP</h1>
+    </div>
+
+    <div class="form-container">
+        <!-- Form tạo sản phẩm -->
+        <form action="/users/products/create" method="post">
+            <label for="name">Product Name:</label>
+            <input type="text" id="name" name="name" required><br>
+
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" required><br>
+
+            <label for="shop_id">Shop ID:</label>
+            <input type="number" id="shop_id" name="shop_id" required><br>
+
+            <label for="amount">Amount:</label>
+            <textarea id="amount" name="amount"></textarea><br>
+
+            <button type="submit">Create Product</button>
+        </form>
+
+        <!-- Form cập nhật sản phẩm -->
+        <form action="/users/products/update" method="post">
+            <label for="id">Product ID:</label>
+            <input type="text" id="id" name="id" required><br>
+
+            <label for="name">Product Name:</label>
+            <input type="text" id="name" name="name" required><br>
+
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" required><br>
+
+            <label for="shop_id">Shop ID:</label>
+            <input type="number" id="shop_id" name="shop_id" required><br>
+
+            <label for="amount">Amount:</label>
+            <textarea id="amount" name="amount"></textarea><br>
+
+            <button type="submit">Update Product</button>
+        </form>
+    </div>
+    <div id="updateForm" class="hidden form-container">
+        <form id="productUpdateForm" action="/users/products/update" method="post">
+            <label for="productID">Product ID:</label>
+            <input type="" id="productId" name="id"><br><br>
+
+            <label for="name">Product Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" required><br><br>
+
+            <label for="shop_id">Shop ID:</label>
+            <input type="text" id="shop_id" name="shop_id" required><br><br>
+
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" name="amount" required><br><br>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <script>
+          async function deleteProduct(id, url) {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id })
+            });
+
+            if (response.ok) {
+                alert("Product deleted successfully");
+                location.reload(); 
+            } else {
+                alert("Error deleting product");
+            }
+        }
+
+    // Function to show update form with populated data
+    function showUpdateForm(id, name, price, shopId, amount) {
+        // Populate the form with the existing product data
+        document.getElementById("updateForm").classList.remove("hidden");
+        document.getElementById("productUpdateForm").id.value = id;
+        document.getElementById("productUpdateForm").name.value = name;
+        document.getElementById("productUpdateForm").price.value = price;
+        document.getElementById("productUpdateForm").shopId.value = shopId;
+        document.getElementById("productUpdateForm").amount.value = amount;
+        document.getElementById("productUpdateForm").action = `/users/products/update`; // Update action with the correct URL
+
+        // Hidden input for product ID
+        const productIdInput = document.createElement("input");
+        productIdInput.type = "hidden";
+        productIdInput.name = "id";
+        productIdInput.value = id;
+        document.getElementById("productUpdateForm").appendChild(productIdInput);
+    }
+
+    // Show update form on button click (toggle)
+        document.getElementById("updateButton").addEventListener("click", function() {
+        document.getElementById("updateForm").classList.toggle("hidden");
+    });
+</script>
+    <!-- Display product list -->
+    <h3>Product List</h3>
+    <%- products_table %>
+    <a href="/logout">Logout</a>
+</body>
+</html>

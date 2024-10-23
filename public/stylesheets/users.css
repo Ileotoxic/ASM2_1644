@@ -1,0 +1,135 @@
+/* public/stylesheets/users.css */
+
+/* Thiết lập phong cách cho toàn trang */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 20px;
+}
+
+/* Container cho tiêu đề */
+.title-container {
+    display: flex; /* Sử dụng Flexbox để sắp xếp */
+    justify-content: space-between; /* Căn giữa khoảng cách giữa h1 và h2 */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    margin-bottom: 20px; /* Giảm khoảng cách dưới cùng cho container */
+}
+
+/* Định dạng tiêu đề h1 */
+h1 {
+    color: #2c3e50;
+    font-size: 2.5rem;
+    margin-bottom: 0; /* Bỏ margin dưới */
+}
+
+/* Định dạng tiêu đề h2 */
+h2 {
+    color: #2c3e50;
+    font-size: 2.5rem; /* Kích thước giống h1 */
+    margin-bottom: 0; /* Bỏ margin dưới */
+}
+
+/* Container chứa hai form */
+.form-container {
+    display: flex; /* Sử dụng Flexbox để sắp xếp */
+    justify-content: space-between; /* Căn giữa khoảng cách giữa các form */
+    margin-bottom: 30px; /* Khoảng cách phía dưới */
+}
+
+/* Định dạng cho mỗi form */
+.form-container form {
+    flex: 1; /* Cho mỗi form chiếm đều không gian */
+    margin-right: 20px; /* Khoảng cách bên phải cho form đầu tiên */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px; /* Giảm padding để làm cho form nhỏ lại */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Đảm bảo form cuối cùng không có margin bên phải */
+.form-container form:last-child {
+    margin-right: 0; /* Bỏ margin bên phải cho form cuối cùng */
+}
+
+/* Định dạng nhãn và trường nhập liệu */
+label {
+    display: block;
+    margin-bottom: 5px; /* Giảm khoảng cách dưới nhãn */
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+    width: 80%; /* Giảm chiều rộng của các trường nhập liệu xuống 80% */
+    padding: 8px; /* Giảm padding để phần nhập nhỏ hơn */
+    margin-bottom: 10px; /* Giảm khoảng cách giữa các trường nhập liệu */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Nút submit */
+button[type="submit"] {
+    background-color: #28a745;
+    color: #fff;
+    padding: 8px 10px; /* Giảm padding để nút nhỏ lại */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem; /* Giảm kích thước chữ */
+    width: auto; /* Đặt chiều rộng tự động */
+    margin: 0 auto; /* Căn giữa nút */
+    display: block; /* Để margin auto hoạt động */
+}
+
+button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+/* Định dạng tiêu đề cho danh sách sản phẩm */
+h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+/* Danh sách sản phẩm */
+.products_table {
+    width: 100%; /* Đặt chiều rộng bảng */
+    border-collapse: collapse; /* Gộp các biên bảng lại */
+    margin-top: 20px; /* Khoảng cách phía trên */
+}
+
+.products_table th,
+.products_table td {
+    border: 1px solid #ccc; /* Viền bảng */
+    padding: 12px; /* Padding cho ô */
+    text-align: left; /* Căn trái cho nội dung */
+}
+
+.products_table th {
+    background-color: #3498db; /* Màu nền cho tiêu đề bảng */
+    color: white; /* Màu chữ cho tiêu đề */
+    font-weight: bold; /* Đậm chữ */
+}
+
+.products_table tr:nth-child(even) {
+    background-color: #f2f2f2; /* Màu nền cho các hàng chẵn */
+}
+
+.products_table tr:hover {
+    background-color: #e0e0e0; /* Màu nền khi hover lên hàng */
+}
+
+/* Link logout */
+a[href="/logout"] {
+    display: inline-block;
+    margin-top: 20px;
+    color: #dc3545;
+    text-decoration: none;
+}
+
+a[href="/logout"]:hover {
+    color: #c82333;
+}

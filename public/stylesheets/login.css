@@ -1,0 +1,94 @@
+/* public/stylesheets/style.css */
+
+/* Thiết lập phong cách cho toàn trang */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    flex-direction: column; /* Sắp xếp các phần tử theo cột */
+}
+
+/* Định dạng tiêu đề trang */
+h1 {
+    font-size: 2rem;
+    color: #2c3e50;
+    text-align: center; /* Căn giữa tiêu đề */
+    margin-bottom: 10px; /* Khoảng cách dưới tiêu đề */
+}
+
+/* Định dạng phần mô tả và form */
+h3, p {
+    text-align: center;
+    margin-bottom: 10px; /* Khoảng cách giữa mô tả và form */
+}
+
+/* Định dạng form login */
+.form-container {
+    display: flex; /* Sử dụng Flexbox để sắp xếp */
+    justify-content: space-between; /* Căn giữa khoảng cách giữa các form */
+    margin-bottom: 30px; /* Khoảng cách phía dưới */
+}
+
+/* Định dạng cho mỗi form */
+.form-container form {
+    flex: 1; /* Cho mỗi form chiếm đều không gian */
+    margin-right: 20px; /* Khoảng cách bên phải cho form đầu tiên */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Đảm bảo form cuối cùng không có margin bên phải */
+.form-container form:last-child {
+    margin-right: 0; /* Bỏ margin bên phải cho form cuối cùng */
+}
+
+/* Định dạng nhãn và trường nhập liệu */
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 80%; /* Giảm chiều rộng xuống 80% */
+    padding: 8px; /* Giảm padding xuống 8px */
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+/* Định dạng nút đăng nhập */
+button {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1rem;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+/* Link logout */
+a[href="/logout"] {
+    display: inline-block;
+    margin-top: 20px;
+    color: #dc3545;
+    text-decoration: none;
+}
+
+a[href="/logout"]:hover {
+    color: #c82333;
+}

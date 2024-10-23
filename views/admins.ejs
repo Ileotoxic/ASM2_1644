@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <meta http-equiv="refresh" content="30">
+    <style>
+      .hidden {
+          display: none;
+      }
+      .form-container {
+          margin-top: 20px;
+      }
+      .hidden {
+    display: none; 
+      }
+  </style>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <!-- Display the dropdown list at here -->
+    <%- droplist %>
+    <!-- Display the products table at here -->
+    <%- products_table %> 
+    <div id="updateUserForm" class="hidden form-container">
+      <form id="UserUpdateForm" action="/admins/user/update" method="post">
+
+          <input id="usersId" name="uid" class="hidden" readonly ><br><br>
+
+          <label for="shop_id">Shop ID:</label>
+          <input type="text" id="shop_id" name="shop_id" value="" required readonly><br><br>
+
+          <label for="role_id">Role ID:</label>
+          <input type="number" id="role_id" name="role_id" required><br><br>
+
+          <button type="submit">Submit</button>
+      </form>
+    </div>
+    <h3>Users List</h3>
+    <%- users_table %>
+
+    <script>
+      async function deleteUsers(id, url) {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ id })
+        });
+
+        if (response.ok) {
+            alert("User deleted successfully");
+            location.reload(); 
+        } else {
+            alert("Error deleting user");
+        }
+      } 
+      
+      function showUpdateRoleForm(id, shop_id, role_id) {
+          document.getElementById("updateUserForm").classList.remove("hidden");
+          document.getElementById("UserUpdateForm").id.value = id;
+          document.getElementById("UserUpdateForm").shop_id.value = shop_id;
+          document.getElementById("UserUpdateForm").role_id.value = role_id;
+          document.getElementById("UserUpdateForm").action = `/admins/user/update`;
+
+          const usersIdInput = document.createElement("input");
+          usersIdInput.type = "hidden";
+          usersIdInput.name = "id";
+          usersIdInput.value = id;
+          document.getElementById("UserUpdateForm").appendChild(usersIdInput);
+      }
+      
+      document.getElementById("updateButton").addEventListener("click", function() {
+          document.getElementById("updateUserForm").classList.toggle("hidden");
+      });
+    </script>
+    <a href="/logout">Logout</a>
+  </body>
+</html>
